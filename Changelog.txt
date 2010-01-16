@@ -1,0 +1,8 @@
+MicroModels Changelog:
+--------------------------------------
+
+Below are the key highlights of changes that have been made to MicroModels. See the subversion repository for a 
+detailed history and prior versions (http://svn.paulstovell.com/svn/MicroModels). 
+
+2010-01-15:
+  - Publishing the MicroModels project.

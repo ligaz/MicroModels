@@ -1,0 +1,30 @@
+﻿<Page 
+    x:Class="Sample.CustomerEditor.EditCustomerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="EditCustomerView"
+    FontSize="10pt"
+    >
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Save" Command="{Binding Path=Save}" />
+        </ToolBar>
+
+        <Border Background="#f0f0f0">
+            <StackPanel>
+                <WrapPanel Margin="1">
+                    <Label Margin="1" Width="130">FirstName</Label>
+                    <TextBox Margin="1" Width="50" Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                </WrapPanel>
+                <WrapPanel Margin="1">
+                    <Label Margin="1" Width="130">Surname</Label>
+                    <TextBox Margin="1" Width="200" Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}" />
+                </WrapPanel>
+                <WrapPanel Margin="1">
+                    <Label Margin="1" Width="130">Full Name</Label>
+                    <Label Margin="1" Width="200" Height="50" Content="{Binding Path=FullName}" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Page>

@@ -1,0 +1,9 @@
+bin
+obj
+TestResults
+*.suo
+*csproj.user
+.*.swp
+*.resharper*
+_ReSharper*
+*.pdb
