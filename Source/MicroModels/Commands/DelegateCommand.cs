@@ -13,7 +13,8 @@ namespace MicroModels.Commands
 
         public event EventHandler CanExecuteChanged;
 
-        public DelegateCommand(Action<object> executeMethod) : this(executeMethod, null)
+        public DelegateCommand(Action<object> executeMethod)
+            : this(executeMethod, null)
         {
         }
 
@@ -38,15 +39,11 @@ namespace MicroModels.Commands
         {
             var canExecuteChangedHandler = CanExecuteChanged;
             if (canExecuteChangedHandler == null) return;
-            
-            Dispatcher dispatcher = null;
-            if (Application.Current != null)
-            {
-                dispatcher = Application.Current.Dispatcher;
-            }
+
+            Dispatcher dispatcher = Dispatcher;
             if (!((dispatcher == null) || dispatcher.CheckAccess()))
             {
-                dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(this.OnCanExecuteChanged));
+                dispatcher.BeginInvoke(new Action(this.OnCanExecuteChanged));
             }
             else
             {
@@ -67,6 +64,25 @@ namespace MicroModels.Commands
         void ICommand.Execute(object parameter)
         {
             Execute(parameter);
+        }
+
+        private static Dispatcher Dispatcher
+        {
+            get
+            {
+#if SILVERLIGHT
+                if (Deployment.Current != null)
+                {
+                    return Deployment.Current.Dispatcher;
+                }
+#else
+                if (Application.Current != null)
+                {
+                    return Application.Current.Dispatcher;
+                }
+#endif
+                return null;
+            }
         }
     }
 }

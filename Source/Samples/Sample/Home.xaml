@@ -4,13 +4,12 @@
     Title="Home" FontSize="10pt">
     <StackPanel>
         <TextBlock Margin="5">
-            <Hyperlink Click="GoToCustomerEditorDemo">
+            <Hyperlink NavigateUri="/CustomerEditor/EditCustomerView.xaml">
                 Edit Customer
             </Hyperlink>
         </TextBlock>
-        
         <TextBlock Margin="5">
-            <Hyperlink Click="GoToInvoiceEditor">
+            <Hyperlink NavigateUri="/Invoicing/Views/InvoiceView.xaml">
                 Edit Invoice
             </Hyperlink>
         </TextBlock>

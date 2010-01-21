@@ -1,13 +1,20 @@
-﻿using System.Windows.Controls;
-
-namespace Sample.CustomerEditor
+﻿namespace Sample.CustomerEditor
 {
-    public partial class EditCustomerView : Page
+    public partial class EditCustomerView
     {
-        public EditCustomerView(EditCustomerModel model)
+        public EditCustomerView()
         {
             InitializeComponent();
-            DataContext = model;
+            DataContext = CreateModel();
+        }
+
+        private static EditCustomerModel CreateModel()
+        {
+            var customer = new Customer();
+            customer.FirstName = "John";
+            customer.LastName = "Smith";
+
+            return new EditCustomerModel(customer, new CustomerRepository());
         }
     }
 }

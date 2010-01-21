@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{BEA5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Samples\Sample\Sample.csproj", "{BBF8FCCD-CD17-469F-8309-C278BFA6F736}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroModels.Silverlight", "MicroModels\MicroModels.Silverlight.csproj", "{94E47DEB-678D-4F62-BACC-6BC5D70866C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Silverlight", "Samples\Sample\Sample.Silverlight.csproj", "{88A4BA78-3B4D-45BE-9C18-2811BBCC9065}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +31,20 @@ Global
 		{BBF8FCCD-CD17-469F-8309-C278BFA6F736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBF8FCCD-CD17-469F-8309-C278BFA6F736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF8FCCD-CD17-469F-8309-C278BFA6F736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E47DEB-678D-4F62-BACC-6BC5D70866C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E47DEB-678D-4F62-BACC-6BC5D70866C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E47DEB-678D-4F62-BACC-6BC5D70866C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E47DEB-678D-4F62-BACC-6BC5D70866C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A4BA78-3B4D-45BE-9C18-2811BBCC9065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A4BA78-3B4D-45BE-9C18-2811BBCC9065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A4BA78-3B4D-45BE-9C18-2811BBCC9065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A4BA78-3B4D-45BE-9C18-2811BBCC9065}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BBF8FCCD-CD17-469F-8309-C278BFA6F736} = {BEA50535-6CB3-4F4E-B5B7-6A5EF598F2D8}
+		{88A4BA78-3B4D-45BE-9C18-2811BBCC9065} = {BEA50535-6CB3-4F4E-B5B7-6A5EF598F2D8}
 	EndGlobalSection
 EndGlobal

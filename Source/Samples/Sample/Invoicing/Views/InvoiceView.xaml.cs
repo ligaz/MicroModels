@@ -1,13 +1,19 @@
-﻿using System.Windows.Controls;
+﻿using Sample.Invoicing.Services;
 
 namespace Sample.Invoicing.Views
 {
-    public partial class InvoiceView : Page
+    public partial class InvoiceView
     {
-        public InvoiceView(InvoiceViewModel model)
+        public InvoiceView()
         {
             InitializeComponent();
-            DataContext = model;
+            DataContext = CreateModel();
+        }
+
+        private static InvoiceViewModel CreateModel()
+        {
+            var service = new OrderService();
+            return new InvoiceViewModel(service.GetOrder(1), service.GetLineItems(1), service);
         }
     }
 }

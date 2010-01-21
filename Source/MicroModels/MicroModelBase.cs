@@ -5,10 +5,15 @@ using System.Linq;
 using MicroModels.Description;
 using MicroModels.Extensions;
 
+#if SILVERLIGHT
+using PropertyDescriptor = MicroModels.Description.PropertyDescriptor;
+#else
+using PropertyDescriptor = System.ComponentModel.PropertyDescriptor;
+#endif
+
 namespace MicroModels
 {
-    [TypeDescriptionProvider(typeof(ModelTypeDescriptionProvider))]
-    public abstract class MicroModelBase : IMicroModel, ISelfDescribing, INotifyPropertyChanged
+    public abstract partial class MicroModelBase : IMicroModel, ISelfDescribing, INotifyPropertyChanged
     {
         private readonly List<IPropertyDefinition> _properties = new List<IPropertyDefinition>();
         private readonly List<IModelExtension> _extensions = new List<IModelExtension>();

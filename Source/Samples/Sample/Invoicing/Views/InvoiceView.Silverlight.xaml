@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Sample.Invoicing.Views.InvoiceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="clr-namespace:Microsoft.Practices.Composite.Presentation.Commands;assembly=Microsoft.Practices.Composite.Presentation">
+    <Grid DataContext="{Binding Object}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Button Content="Save" prism:Click.Command="{Binding Path=Save}"/>
+
+        <Border Background="#f0f0f0" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">Invoice ID</TextBlock>
+                    <TextBox Margin="1" Width="50" Text="{Binding Path=Id, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">Customer Name</TextBlock>
+                    <TextBox Margin="1" Width="200" Text="{Binding Path=CustomerName, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">Customer Address</TextBlock>
+                    <TextBox Margin="1" Width="200" Height="50" Text="{Binding Path=CustomerAddress, Mode=TwoWay}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        
+        <Grid Margin="10" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Product" />
+                <TextBlock Grid.Column="1" Text="Price" />
+                <TextBlock Grid.Column="2" Text="Quantity" />
+                <TextBlock Grid.Column="3" Text="Total" />
+            </Grid>
+
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding Path=LineItems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid DataContext="{Binding Object}" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Margin="1" Grid.Column="0" Text="{Binding Path=ProductName, Mode=TwoWay}" />
+                            <TextBlock Margin="3" Grid.Column="1" Text="{Binding Path=UnitPrice}" />
+                            <TextBox Margin="1" Grid.Column="2" Text="{Binding Path=Quantity, Mode=TwoWay}" />
+                            <TextBlock Margin="3" Grid.Column="3" Text="{Binding Path=LineTotal}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

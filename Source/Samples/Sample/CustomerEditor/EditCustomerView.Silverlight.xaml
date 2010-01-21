@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Sample.CustomerEditor.EditCustomerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:prism="clr-namespace:Microsoft.Practices.Composite.Presentation.Commands;assembly=Microsoft.Practices.Composite.Presentation">
+    
+    <Grid DataContext="{Binding Object}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button Content="Save" prism:Click.Command="{Binding Path=Save}"/>
+
+        <Border Background="#f0f0f0" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">FirstName</TextBlock>
+                    <TextBox Margin="1" Width="50" Text="{Binding Path=FirstName, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">Surname</TextBlock>
+                    <TextBox Margin="1" Width="200" Text="{Binding Path=Surname, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1">
+                    <TextBlock Margin="1" Width="130">Full Name</TextBlock>
+                    <TextBlock Margin="1" Width="200" Height="50" Text="{Binding Path=FullName}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

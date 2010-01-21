@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
 
 namespace Sample
@@ -12,5 +8,9 @@ namespace Sample
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.StartupUri = new Uri("Window1.xaml", UriKind.Relative);
+        }
     }
 }

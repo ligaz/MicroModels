@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -13,6 +12,10 @@ using MicroModels.Description;
 using MicroModels.Utilities;
 using MicroModels.Expressions;
 using MicroModels.Dependencies.ExpressionAnalysis;
+
+#if !SILVERLIGHT
+using System.ComponentModel;
+#endif
 
 namespace MicroModels
 {
@@ -43,6 +46,7 @@ namespace MicroModels
 
         public static IPropertyDefinition Property(this IMicroModel model, string propertyName, Type propertyType, Expression<Func<object>> getPropertyCallback, Func<object, object> setPropertyCallback)
         {
+            getPropertyCallback = Evaluator.EvaluateClosures(getPropertyCallback);
             var compiledGetter = getPropertyCallback.Compile();
             var property = BuildProperty(model, propertyName, propertyType);
             property.Getter = (x) => compiledGetter();
@@ -53,6 +57,7 @@ namespace MicroModels
 
         public static IPropertyDefinition Property<TProperty>(this IMicroModel model, string propertyName, Expression<Func<TProperty>> getPropertyCallback, Func<TProperty, TProperty> setPropertyCallback)
         {
+            getPropertyCallback = Evaluator.EvaluateClosures(getPropertyCallback);
             var compiledGetter = getPropertyCallback.Compile();
             var property = BuildProperty(model, propertyName, typeof(TProperty));
             property.Getter = (x) => compiledGetter();
@@ -63,6 +68,7 @@ namespace MicroModels
 
         public static IPropertyDefinition Property(this IMicroModel model, string propertyName, Type propertyType, Expression<Func<object>> getPropertyCallback)
         {
+            getPropertyCallback = Evaluator.EvaluateClosures(getPropertyCallback);
             var compiledGetter = getPropertyCallback.Compile();
             var property = BuildProperty(model, propertyName, propertyType);
             property.Getter = (x) => compiledGetter();
@@ -72,6 +78,7 @@ namespace MicroModels
 
         public static IPropertyDefinition Property<TProperty>(this IMicroModel model, string propertyName, Expression<Func<TProperty>> getPropertyCallback)
         {
+            getPropertyCallback = Evaluator.EvaluateClosures(getPropertyCallback);
             var compiledGetter = getPropertyCallback.Compile();
             var property = BuildProperty(model, propertyName, typeof(TProperty));
             property.Getter = (x) => compiledGetter();
@@ -81,6 +88,7 @@ namespace MicroModels
 
         public static IPropertyDefinition Property<TProperty>(this IMicroModel model, Expression<Func<TProperty>> propertyGetter)
         {
+            propertyGetter = Evaluator.EvaluateClosures(propertyGetter);
             var member = propertyGetter.GetOutermostMember();
             var propertyInfo = (PropertyInfo)member.Member;
             var property = BuildProperty(model, propertyInfo.Name, typeof(TProperty));
@@ -153,6 +161,7 @@ namespace MicroModels
 
         public static ICollectionDefinition<TElement> Collection<TElement>(this IMicroModel model, string propertyName, Expression<Func<IEnumerable<TElement>>> items)
         {
+            items = Evaluator.EvaluateClosures(items);
             var compiledGetter = items.Compile();
             var property = BuildProperty(model, propertyName, typeof(ObservableCollection<object>));
             var collectionDefinition = new CollectionDefinition<TElement>(property, compiledGetter);

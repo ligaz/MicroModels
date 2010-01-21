@@ -36,7 +36,7 @@ namespace MicroModels.Expressions
 
             var method = GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
                 .Where(x => x.Name == "EvaluateExpression")
-                .FirstOrDefault(x => x.GetParameters().Length == 1 && x.GetParameters()[0].ParameterType == firstParameterType);
+                .FirstOrDefault(x => x.GetParameters().Length == 1 && x.GetParameters()[0].ParameterType.IsAssignableFrom(firstParameterType));
 
             if (method == null)
             {

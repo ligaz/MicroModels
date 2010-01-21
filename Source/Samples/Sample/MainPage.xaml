@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customer="clr-namespace:Sample.CustomerEditor"
+    xmlns:invoice="clr-namespace:Sample.Invoicing.Views"
+    xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls">
+    <controls:TabControl>
+        <controls:TabItem Header="Customer">
+            <customer:EditCustomerView />
+        </controls:TabItem>
+        <controls:TabItem Header="Invoice">
+            <invoice:InvoiceView />
+        </controls:TabItem>
+    </controls:TabControl>
+
+</UserControl>

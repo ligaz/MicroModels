@@ -16,7 +16,7 @@ namespace Sample.Infrastructure
         /// </summary>
         protected void NotifyChanged()
         {
-            var propertyNames = TypeDescriptor.GetProperties(this).OfType<PropertyDescriptor>().Select(x => x.Name);
+            var propertyNames = this.GetType().GetProperties().Select(p => p.Name);
             NotifyChanged(propertyNames);
         }
 
